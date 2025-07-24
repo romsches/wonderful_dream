@@ -1,0 +1,98 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap'); /* Добавлен импорт шрифта Great Vibes */
+
+/* Сброс стандартных отступов браузера и установка черного фона */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Скрывает полосы прокрутки */
+    background-color: black; /* Черный фон, как в вашем C# приложении */
+}
+
+/* Настройки для элемента canvas, чтобы он занимал весь экран */
+canvas {
+    display: block; /* Убирает лишние отступы */
+    width: 100vw; /* Ширина 100% от ширины видимой области браузера */
+    height: 100vh; /* Высота 100% от высоты видимой области браузера */
+    position: absolute; /* Позиционирование относительно окна браузера */
+    top: 0;
+    left: 0;
+    opacity: 0; /* Изначально скрыт */
+    transition: opacity 1s ease-in-out; /* Плавное появление */
+}
+
+/* Стили для контейнера вступительного текста */
+#introTextContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; /* Прозрачный фон для контейнера текста */
+    transition: opacity 3s ease-out; /* Плавное исчезновение контейнера */
+    opacity: 1; /* Изначально виден */
+    pointer-events: none; /* Пропускаем клики через контейнер, чтобы canvas был интерактивным, если бы он не был скрыт */
+    color: white; /* Цвет текста по умолчанию */
+    text-align: center;
+    flex-direction: column; /* Размещаем элементы по вертикали */
+    z-index: 10; /* Убедимся, что контейнер текста поверх канваса */
+}
+
+/* Стили для самого текстового сообщения */
+#introTextMessage {
+    font-size: 2.2em; /* Достаточно большой шрифт */
+    font-weight: 400; /* Нормальный вес, не жирный */
+    line-height: 1.6; /* Межстрочный интервал */
+    opacity: 0; /* Изначально невидимый для плавного появления */
+    transition: opacity 1s ease-in; /* Плавное появление текста */
+    max-width: 80%; /* Ограничение ширины текста */
+    margin-bottom: 20px; /* Отступ снизу, чтобы стрелки были ниже */
+    pointer-events: none; /* Текст не должен перехватывать клики */
+}
+
+/* Стили для стрелок навигации */
+.arrow {
+    position: absolute;
+    font-size: 3em; /* Размер стрелки */
+    color: white; /* Цвет стрелки */
+    cursor: pointer;
+    opacity: 0; /* Изначально скрыты */
+    transition: opacity 0.5s ease-in-out; /* Плавное появление/исчезновение */
+    user-select: none; /* Запрещаем выделение текста стрелок */
+    pointer-events: none; /* Изначально неактивны */
+    z-index: 11; /* Убедимся, что стрелки поверх контейнера текста */
+}
+
+#prevArrow {
+    left: 50px;
+    bottom: 50px;
+}
+
+#nextArrow {
+    right: 50px;
+    bottom: 50px;
+}
+
+/* Стили для последней стрелки ("сердечко") */
+#nextArrow.end-arrow {
+    font-size: 3.5em; /* Больше, чем обычные стрелки */
+    color: white; /* Изменено на белый цвет для черно-белого сердечка */
+}
+
+/* Стили для выделенного имени в тексте */
+.highlight-name {
+    font-size: 1.3em; /* Чуть крупнее, чем основной текст, увеличено на 1 */
+    font-weight: bold; /* Жирный шрифт */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Небольшая тень для читаемости */
+    font-family: 'Great Vibes', cursive; /* Применен шрифт из первых трех текстов */
+}
+
+/* Стили для большого черного сердечка в тексте */
+.large-heart {
+    font-size: 1.5em; /* Увеличиваем размер черного сердечка */
+    line-height: 1; /* Чтобы не влияло на межстрочный интервал основного текста */
+    vertical-align: middle; /* Выравнивание по центру по вертикали */
+}
